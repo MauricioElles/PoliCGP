@@ -1,0 +1,37 @@
+import java.util.List;
+
+public class StatisticsCalculator {
+    
+    // Method to calculate the mean of a list of numbers
+    public static double calculateMean(List<Integer> numbers) {
+        double sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        return sum / numbers.size();
+    }
+    
+    // Method to calculate the standard deviation of a list of numbers
+    public static double calculateStandardDeviation(List<Integer> numbers) {
+        double mean = calculateMean(numbers);
+        double sumSquaredDiffs = 0;
+        for (int num : numbers) {
+            sumSquaredDiffs += Math.pow(num - mean, 2);
+        }
+        return Math.sqrt(sumSquaredDiffs / numbers.size());
+    }
+    
+    // Example of using the methods in a program
+    public static void main(String[] args) {
+        // Example data
+        List<Integer> data = List.of(1, 2, 3, 4, 5);
+        
+        // Calculating the mean and the standard deviation
+        double mean = calculateMean(data);
+        double stdDev = calculateStandardDeviation(data);
+        
+        // Displaying the results
+        System.out.println("Mean: " + mean);
+        System.out.println("Standard Deviation: " + stdDev);
+    }
+}
